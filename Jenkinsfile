@@ -3,10 +3,22 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent{
+                docker{
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps {
-                
-                echo 'Hello New jobs'
-                echo 'New QA jobs'
+
+                sh'''
+                ls -la
+                node --version
+                npm  --version
+                npm ci
+                npm run build
+
+                '''
                 
             }   
         }
