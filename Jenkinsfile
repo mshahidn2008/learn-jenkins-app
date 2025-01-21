@@ -4,6 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             agent{
+                docker{
+
                 dockerfile 'node:18-alphine'
                 reuseNode true
                 }
@@ -25,6 +27,7 @@ pipeline {
       
             
         }
+        
 
     
     
