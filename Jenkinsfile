@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+
+        stage('Test'){
+            steps{
+                echo 'Test stage'
+            }
+
+        }
+         
         stage('Build') {
             agent {
                 docker {
@@ -20,12 +28,7 @@ pipeline {
                 '''
             }
         }
-        stage('Test'){
-            steps{
-                echo 'Test Stage'
-            }
-
-        }
+        
     }
 }
 
